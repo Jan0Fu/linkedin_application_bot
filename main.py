@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import time
 
-email = ""
-password = ""
+email = "asdf@dfksf.com"
+password = "1234ABCD()"
 phone_number = "0944123456"
 url = "https://www.linkedin.com"
 chrome_driver = "/Users/jano/chromedriver"
@@ -23,7 +23,8 @@ password_field.send_keys(password)
 password_field.send_keys(Keys.ENTER)
 time.sleep(5)
 
-all_listings = driver.find_elements(By.CSS_SELECTOR, ".job-card-container--clickable")
+all_listings = driver.find_element(By.CLASS_NAME, "jobs-search-results__list").find_elements(
+    By.CLASS_NAME, "jobs-search-results__list-item")
 for listing in all_listings:
     print("called")
     listing.click()
